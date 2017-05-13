@@ -1,0 +1,31 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui"
+                template="/WEB-INF/template.xhtml">
+
+    <ui:define name="content">
+        <h:form>
+        <p:panelGrid columns="2" id="roundInfo">
+            <h:outputText value="Round:" />
+            <h:outputText value="#{roundPresenter.round.number}" />
+
+            <h:outputText value="League Name:" />
+            <h:outputText value="#{roundPresenter.round.league.name}" />
+
+            <h:outputText value="League Sponsor:" />
+            <h:outputText value="#{roundPresenter.round.league.sponsor}" />
+
+            <h:outputText value="Number of teams:" />
+            <h:outputText value="#{roundPresenter.round.league.numberOfTeams}" />
+
+            <h:outputText value="I:" />
+            <h:outputText value="#{roundPresenter.i}" />
+        </p:panelGrid>
+
+        <p:commandButton value="Add" update="roundInfo" actionListener="#{roundPresenter.add}" />
+        </h:form>
+    </ui:define>
+
+</ui:composition>
