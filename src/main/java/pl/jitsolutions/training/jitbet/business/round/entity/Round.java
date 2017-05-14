@@ -10,6 +10,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
+import org.apache.commons.lang3.builder.ToStringBuilder;
 import pl.jitsolutions.training.jitbet.business.league.entity.League;
 import pl.jitsolutions.training.jitbet.business.game.entity.Game;
 
@@ -59,5 +60,15 @@ public class Round {
 
     public void setGames(List<Game> games) {
         this.games = games;
+    }
+
+    @Override
+    public String toString() {
+        return new ToStringBuilder(this)
+                .append("id", id)
+                .append("number", number)
+                .append("league", league)
+                .append("games", games)
+                .toString();
     }
 }

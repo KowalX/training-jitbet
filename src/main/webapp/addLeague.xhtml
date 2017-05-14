@@ -1,0 +1,36 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui"
+                template="/WEB-INF/template.xhtml">
+
+    <ui:define name="content">
+        <p:growl id="growl" autoUpdate="true" sticky="true" />
+
+        <h:form>
+            <p:panelGrid columns="3" id="addLeague">
+                <h:outputText value="Name:" />
+                <p:inputText id="name" value="#{addLeaguePresenter.league.name}" />
+                <p:message for="name" />
+
+                <h:outputText value="Number of teams:" />
+                <p:inputNumber id="numberOfTeams" value="#{addLeaguePresenter.league.numberOfTeams}" decimalPlaces="0" thousandSeparator="" />
+                <p:message for="numberOfTeams" />
+
+                <h:outputText value="Sponsor:" />
+                <p:selectOneMenu id="sponsor" value="#{addLeaguePresenter.league.sponsor}">
+                    <f:selectItems value="#{addLeaguePresenter.sponsors}" var="sponsor" itemLabel="#{sponsor}" itemValue="#{sponsor}" />
+                </p:selectOneMenu>
+                <p:message for="sponsor" />
+
+                <h:outputText value="Establised date:" />
+                <p:calendar id="established" value="#{addLeaguePresenter.league.established}" converter="localDateCalendarConverter" pattern="dd-MM-yyyy" />
+                <p:message for="established" />
+            </p:panelGrid>
+
+            <p:commandButton value="Add" update="@form" actionListener="#{addLeaguePresenter.save}" />
+        </h:form>
+    </ui:define>
+
+</ui:composition>
